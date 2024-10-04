@@ -66,12 +66,10 @@ impl Localization {
 
         let current_lang = match get_locale() {
             None => String::from("en-US"),
-            Some(locale) => {
-                if bundles.contains_key(&locale) {
-                    locale
-                } else {
-                    String::from("en-US")
-                }
+            Some(locale) => if bundles.contains_key(&locale) {
+                locale
+            } else {
+                String::from("en-US")
             }
         };
 
